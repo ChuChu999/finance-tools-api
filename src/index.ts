@@ -4,7 +4,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import { helloWorldRouter } from './controllers/hello-world-controller';
 
 const app = express();
-const port: number = 8000;
+const port = 8000;
 const swaggerOptions: SwaggerOptions = {
   definition: {
     info: {
@@ -14,7 +14,7 @@ const swaggerOptions: SwaggerOptions = {
   },
   apis: ['src/controllers/*.ts'],
 };
-const swaggerSpec: object = swaggerJSDoc(swaggerOptions);
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/', helloWorldRouter);
