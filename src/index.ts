@@ -8,11 +8,11 @@ const port: number = 8000;
 const swaggerOptions: SwaggerOptions = {
   definition: {
     info: {
-      title: 'Hello World',
+      title: 'Finance Tools API',
       version: '1.0.0',
     },
   },
-  apis: ['src/index.ts'],
+  apis: ['src/controllers/*.ts'],
 };
 const swaggerSpec: object = swaggerJSDoc(swaggerOptions);
 
