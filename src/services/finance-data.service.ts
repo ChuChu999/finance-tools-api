@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FinanceDataFetchPriceException } from '../exceptions/finance-data-fetch-price-exception';
+import { YahooFinanceQuoteResponse } from '../models/yahoo-finance-quote';
 
 export class FinanceDataService {
   private quoteEndpoint = 'https://query2.finance.yahoo.com/v7/finance/quote';
@@ -14,7 +15,7 @@ export class FinanceDataService {
     const joinedSymbols = symbols.join();
     const quoteUrl = `${this.quoteEndpoint}?symbols=${joinedSymbols}&fields=regularMarketPrice`;
     const response = await axios.get(quoteUrl);
-    const quotes: { regularMarketPrice: number; symbol: string }[] =
+    const quotes: YahooFinanceQuoteResponse[] =
       response.data.quoteResponse.result;
 
     if (quotes.length !== symbols.length) {
