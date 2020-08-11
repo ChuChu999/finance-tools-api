@@ -11,7 +11,6 @@ export function apiErrorMiddleware(
   if (err instanceof ApiError) {
     res.status(err.status).json(err);
   } else {
-    console.error(err);
     res.status(500).json(new InternalServerError(err.stack));
     next(err);
   }
