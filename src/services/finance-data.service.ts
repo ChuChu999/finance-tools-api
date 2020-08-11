@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { FinanceDataFetchPriceException } from '../exceptions/finance-data-fetch-price-exception';
-import { YahooFinanceQuoteResponse } from '../models/yahoo-finance-quote';
+import { YahooFinanceQuoteResponse } from '../models/yahoo-finance-quote-response';
 
 export class FinanceDataService {
   private quoteEndpoint = 'https://query2.finance.yahoo.com/v7/finance/quote';
