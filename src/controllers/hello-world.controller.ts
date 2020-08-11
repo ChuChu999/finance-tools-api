@@ -1,4 +1,5 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+import { asyncHandlerMiddleware } from '../middleware/async-handler.middleware';
 
 export const helloWorldRouter: express.Router = express.Router();
 
@@ -14,6 +15,11 @@ export const helloWorldRouter: express.Router = express.Router();
  *       200:
  *         description: OK
  */
-helloWorldRouter.get('/hello-world', (req, res) => {
-  res.json({ response: 'Hello World!' });
-});
+helloWorldRouter.get(
+  '/hello-world',
+  asyncHandlerMiddleware(
+    async (req: Request, res: Response): Promise<void> => {
+      res.json({ response: 'Hello World!' });
+    }
+  )
+);

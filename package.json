@@ -6,7 +6,8 @@
     "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .ts src/",
-    "build": "npm run lint && tsc"
+    "build": "npm run lint && tsc",
+    "prod": "npm run build && node dist/app.js"
   },
   "dependencies": {
     "axios": "^0.19.2",

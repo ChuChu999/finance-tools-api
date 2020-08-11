@@ -5,10 +5,17 @@ import { FinanceDataService } from './finance-data.service';
 export class AssetAllocationService {
   private financeDataService: FinanceDataService = new FinanceDataService();
 
-  calculateAssetAllocations(
+  /**
+   * Calculate the asset allocation
+   *
+   * @param symbolList A list of ticker symbols
+   * @param sharesList A list of share quantities
+   * @return A list of asset allocations
+   */
+  async calculateAssetAllocations(
     symbolList: string[],
     sharesList: number[]
-  ): AssetAllocation[] {
+  ): Promise<AssetAllocation[]> {
     if (symbolList.length !== sharesList.length) {
       throw new AssetAllocationParametersException(
         400,
@@ -25,7 +32,9 @@ export class AssetAllocationService {
       }
     });
 
-    const prices: number[] = symbolList.map(this.financeDataService.getPrice);
+    const prices: number[] = await this.financeDataService.fetchPrices(
+      symbolList
+    );
 
     const totalValue: number = prices.reduce(
       (accumulator: number, currentPrice: number, currentIndex: number) => {
@@ -54,12 +63,21 @@ export class AssetAllocationService {
     return assetAllocations;
   }
 
-  calculateAssetAllocationDeltas(
+  /**
+   * Calculate the asset allocation including share deltas
+   *
+   * @param symbolList A list of ticker symbols
+   * @param sharesList A list of share quantities
+   * @param targetWeights A list of target weights as percentages
+   * @param contribution The contribution amount
+   * @return A list of asset allocations including share deltas
+   */
+  async calculateAssetAllocationWithDeltas(
     symbolList: string[],
     sharesList: number[],
     targetWeights: number[],
     contribution: number
-  ): AssetAllocation[] {
+  ): Promise<AssetAllocation[]> {
     if (
       !(
         symbolList.length === sharesList.length &&
@@ -85,7 +103,7 @@ export class AssetAllocationService {
       );
     }
 
-    const assetAllocations: AssetAllocation[] = this.calculateAssetAllocations(
+    const assetAllocations: AssetAllocation[] = await this.calculateAssetAllocations(
       symbolList,
       sharesList
     );
