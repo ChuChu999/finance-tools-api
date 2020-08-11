@@ -1,15 +1,17 @@
 {
   "name": "finance-tools-api",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "src/app.ts",
   "scripts": {
     "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .ts src/",
-    "build": "tsc"
+    "build": "npm run lint && tsc"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
+    "helmet": "^4.0.0",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4"
   },
