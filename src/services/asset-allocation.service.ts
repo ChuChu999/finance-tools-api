@@ -1,9 +1,9 @@
-import { AssetAllocationParametersException } from '../exceptions/asset-allocation-parameters-exception';
+import { AssetAllocationParametersException } from '../exceptions/asset-allocation-parameters.exception';
 import { AssetAllocation } from '../models/asset-allocation';
-import { FinanceDataService } from './finance-data.service';
+import { YahooFinanceService } from './yahoo-finance.service';
 
 export class AssetAllocationService {
-  private financeDataService: FinanceDataService = new FinanceDataService();
+  private financeDataService: YahooFinanceService = new YahooFinanceService();
 
   /**
    * Calculate the asset allocation

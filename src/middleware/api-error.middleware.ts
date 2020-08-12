@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { ApiError } from '../exceptions/api-error';
-import { InternalServerError } from '../exceptions/internal-server-error';
+import { ApiError } from '../exceptions/api.error';
+import { InternalServerError } from '../exceptions/internal-server.error';
 
 export function apiErrorMiddleware(
   err: Error,

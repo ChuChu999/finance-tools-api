@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { AssetAllocationParametersException } from '../exceptions/asset-allocation-parameters-exception';
+import { AssetAllocationParametersException } from '../exceptions/asset-allocation-parameters.exception';
 import { asyncHandlerMiddleware } from '../middleware/async-handler.middleware';
 import { AssetAllocation } from '../models/asset-allocation';
 import { AssetAllocationService } from '../services/asset-allocation.service';

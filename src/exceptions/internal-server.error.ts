@@ -1,4 +1,4 @@
-import { ApiError } from './api-error';
+import { ApiError } from './api.error';
 
 export class InternalServerError extends ApiError {
   constructor(stack = 'Undefined') {

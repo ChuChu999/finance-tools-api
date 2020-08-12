@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { FinanceDataFetchPriceException } from '../exceptions/finance-data-fetch-price-exception';
+import { YahooFinanceQuoteException } from '../exceptions/yahoo-finance-quote.exception';
 import { YahooFinanceQuoteResponse } from '../models/yahoo-finance-quote-response';
 
-export class FinanceDataService {
+export class YahooFinanceService {
   /**
    * Fetch the prices of a list of stocks
    *
@@ -29,7 +29,7 @@ export class FinanceDataService {
           index >= quotes.length ||
           quotes[index].symbol.toUpperCase() !== symbol.toUpperCase()
         ) {
-          throw new FinanceDataFetchPriceException(symbol);
+          throw new YahooFinanceQuoteException(symbol);
         }
       });
     }
