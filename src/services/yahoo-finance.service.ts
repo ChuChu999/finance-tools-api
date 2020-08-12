@@ -24,7 +24,7 @@ export class YahooFinanceService {
       response.data.quoteResponse.result;
 
     if (quotes.length !== symbols.length) {
-      symbols.map((symbol: string, index: number) => {
+      symbols.map((symbol: string, index: number): void => {
         if (
           index >= quotes.length ||
           quotes[index].symbol.toUpperCase() !== symbol.toUpperCase()
@@ -35,7 +35,9 @@ export class YahooFinanceService {
     }
 
     const prices: number[] = response.data.quoteResponse.result.map(
-      (quote: { regularMarketPrice: number }) => quote.regularMarketPrice
+      (quote: { regularMarketPrice: number }): number => {
+        return quote.regularMarketPrice;
+      }
     );
 
     return prices;
