@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { YahooFinanceQuoteException } from '../exceptions/yahoo-finance-quote.exception';
+import { YahooFinanceQuote } from '../models/yahoo-finance-quote';
 import { YahooFinanceQuoteResponse } from '../models/yahoo-finance-quote-response';
 
 export class YahooFinanceService {
@@ -13,15 +14,14 @@ export class YahooFinanceService {
     const quoteEndpoint = 'https://query2.finance.yahoo.com/v7/finance/quote';
     const joinedSymbols: string = symbols.join();
 
-    const response = await axios.get(quoteEndpoint, {
+    const response: YahooFinanceQuoteResponse = await axios.get(quoteEndpoint, {
       params: {
         symbols: joinedSymbols,
         fields: 'regularMarketPrice',
       },
     });
 
-    const quotes: YahooFinanceQuoteResponse[] =
-      response.data.quoteResponse.result;
+    const quotes: YahooFinanceQuote[] = response.data.quoteResponse.result;
 
     if (quotes.length !== symbols.length) {
       symbols.map((symbol: string, index: number): void => {
