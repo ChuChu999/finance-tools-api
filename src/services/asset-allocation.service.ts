@@ -52,7 +52,7 @@ export class AssetAllocationService {
 
       assetAllocations.push(
         new AssetAllocation(
-          symbol,
+          symbol.toUpperCase(),
           parseFloat(shares.toFixed(2)),
           parseFloat(price.toFixed(2)),
           parseFloat(currentWeight.toFixed(2))
