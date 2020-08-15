@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import core from 'express-serve-static-core';
 import helmet from 'helmet';
@@ -22,6 +23,7 @@ const swaggerOptions: swaggerJSDoc.Options = {
 
 const swaggerSpec: JsonObject = swaggerJSDoc(swaggerOptions);
 
+app.use(cors());
 app.use(helmet());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(helloWorldRouter);
