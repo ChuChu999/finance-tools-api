@@ -93,7 +93,8 @@ export class AssetAllocationService {
     const totalWeight: number = targetWeights.reduce(
       (accumulator: number, currentWeight: number) => {
         return accumulator + currentWeight;
-      }
+      },
+      0
     );
 
     if (totalWeight !== 100) {
