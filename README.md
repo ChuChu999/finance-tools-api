@@ -1,6 +1,6 @@
 # Finance Tools API
 
-An API developed with Express.js that calculates portfolio asset allocations based off of live data from Yahoo Finance.
+An API developed with Express.js that calculates portfolio asset allocations and provides feedback according to user-defined target weights and contribution amount.
 
 ## Initial Setup
 
